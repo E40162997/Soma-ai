@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SOMA AI</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="soma_icon.png" type="image/png"/>
+  <meta name="theme-color" content="#00FFF5"/>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f0f4f5;
+      color: #222;
+    }
+    header {
+      background-color: #00FFF5;
+      color: #000;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    section {
+      margin: 20px auto;
+      max-width: 600px;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #00AFAA;
+    }
+  </style>
 </head>
-<body style="font-family: sans-serif; text-align: center; padding: 40px;">
-  <h1>Bienvenido a SOMA AI</h1>
-  <p>Esta es tu app inteligente, lista para generar, aprender y publicar contenido.</p>
-  <p><strong>Creada por Edward Nicolas Gonzalez Amorin</strong></p>
+<body>
+  <header>SOMA AI</header>
+
+  <section>
+    <h2>🧠 Ideas generadas por IA</h2>
+    <ul id="ai-content">
+      <li>“Consejos para entrenar con mancuernas desde casa”</li>
+      <li>“Cultura uruguaya explicada en 60 segundos”</li>
+      <li>“Frases para comenzar el día con actitud”</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💬 Chat con SOMA (próximamente)</h2>
+    <p>Muy pronto podrás hablar con SOMA directamente desde esta app.</p>
+  </section>
+
+  <section>
+    <h2>📡 Publicaciones automáticas (en desarrollo)</h2>
+    <p>SOMA pronto podrá publicar en tus redes sociales mientras aprende de vos.</p>
+  </section>
+
+  <section>
+    <h2>Creada por Edward Nicolas Gonzalez Amorin</h2>
+  </section>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").then(() =>
+        console.log("Service Worker registrado")
+      );
+    }
+  </script>
 </body>
 </html>

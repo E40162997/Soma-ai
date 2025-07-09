@@ -1,0 +1,15 @@
+{
+  "name": "SOMA AI",
+  "short_name": "SOMA",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#222831",
+  "theme_color": "#00FFF5",
+  "icons": [
+    {
+      "src": "soma_icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
