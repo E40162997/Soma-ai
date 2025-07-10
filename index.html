@@ -9,30 +9,64 @@
   <meta name="theme-color" content="#00FFF5"/>
   <style>
     body {
-      font-family: sans-serif;
       margin: 0;
-      padding: 20px;
-      background: #f0f4f5;
-      color: #222;
+      font-family: 'Segoe UI', sans-serif;
+      background: #1a1a1a;
+      color: #f1f1f1;
+      padding: 0;
     }
     header {
-      background-color: #00FFF5;
+      background: #00FFF5;
       color: #000;
-      padding: 20px;
       text-align: center;
-      font-size: 24px;
+      padding: 20px 10px;
+      font-size: 1.8rem;
       font-weight: bold;
     }
     section {
-      margin: 20px auto;
-      max-width: 600px;
-      background: white;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .card {
+      background: #2a2a2a;
       border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #0006;
     }
     h2 {
-      color: #00AFAA;
+      color: #00FFF5;
+    }
+    .chatbox {
+      background: #1f1f1f;
+      border: 1px solid #00FFF5;
+      padding: 10px;
+      border-radius: 10px;
+      height: 200px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    input {
+      width: 70%;
+      margin-right: 5px;
+    }
+    button {
+      background: #00FFF5;
+      color: #000;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -40,29 +74,44 @@
   <header>SOMA AI</header>
 
   <section>
-    <h2>🧠 Ideas generadas por IA</h2>
-    <ul id="ai-content">
-      <li>“Consejos para entrenar con mancuernas desde casa”</li>
-      <li>“Cultura uruguaya explicada en 60 segundos”</li>
-      <li>“Frases para comenzar el día con actitud”</li>
-    </ul>
+    <div class="card">
+      <h2>🧠 ¿Qué puede hacer SOMA?</h2>
+      <ul>
+        <li>Aprender de tus hábitos y cultura personal</li>
+        <li>Generar contenido automáticamente 24/7</li>
+        <li>Publicar en redes sociales por vos</li>
+        <li>Interactuar con otras IAs</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>💬 Habla con SOMA</h2>
+      <div class="chatbox" id="chatbox">
+        <p><em>SOMA está lista para conocerte...</em></p>
+      </div>
+      <input type="text" id="userInput" placeholder="Escribí algo..." />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
   </section>
 
-  <section>
-    <h2>💬 Chat con SOMA (próximamente)</h2>
-    <p>Muy pronto podrás hablar con SOMA directamente desde esta app.</p>
-  </section>
-
-  <section>
-    <h2>📡 Publicaciones automáticas (en desarrollo)</h2>
-    <p>SOMA pronto podrá publicar en tus redes sociales mientras aprende de vos.</p>
-  </section>
-
-  <section>
-    <h2>Creada por Edward Nicolas Gonzalez Amorin</h2>
-  </section>
+  <footer>
+    Desarrollado por Edward Nicolas Gonzalez Amorin
+  </footer>
 
   <script>
+    const chatbox = document.getElementById('chatbox');
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+      chatbox.innerHTML += `<p><strong>Vos:</strong> ${msg}</p>`;
+      setTimeout(() => {
+        chatbox.innerHTML += `<p><strong>SOMA:</strong> Estoy aprendiendo de vos...</p>`;
+        chatbox.scrollTop = chatbox.scrollHeight;
+      }, 500);
+      input.value = "";
+    }
+
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("sw.js").then(() =>
         console.log("Service Worker registrado")
